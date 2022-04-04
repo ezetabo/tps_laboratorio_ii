@@ -114,8 +114,11 @@ namespace Entidades
                     if (dato == '1')
                     {
                         resultado += (int)Math.Pow(2, posicion);
-                        retorno = resultado.ToString();
                     }
+                }
+                if (resultado != 0)
+                {
+                    retorno = resultado.ToString();
                 }
             }
             return retorno;
