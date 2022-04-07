@@ -14,16 +14,21 @@ namespace MiCalculadora
     public partial class FormCalculadora : Form
     {
         /// <summary>
-        /// inicializa los componentes con los valos asignados.
+        /// lista con los operadores matematicos.
+        /// </summary>
+        private List<char> operadores = new List<char>() { ' ', '+', '-', '*', '/' };
+
+        /// <summary>
+        /// inicializa los componentes con los valores asignados.
         /// </summary>
         public FormCalculadora()
         {
             InitializeComponent();
-            this.cmbOperador.Items.Add("");
-            this.cmbOperador.Items.Add("+");
-            this.cmbOperador.Items.Add("-");
-            this.cmbOperador.Items.Add("/");
-            this.cmbOperador.Items.Add("*");
+
+            foreach (char item in operadores)
+            {
+                this.cmbOperador.Items.Add(item);
+            }
         }
 
         /// <summary>
@@ -31,10 +36,10 @@ namespace MiCalculadora
         /// </summary>
         private void Limpiar()
         {
-            txtNumero1.Text = string.Empty;
-            txtNumero2.Text = string.Empty;
-            cmbOperador.Text = string.Empty;
-            lblResultado.Text = string.Empty;
+            this.txtNumero1.Text = string.Empty;
+            this.txtNumero2.Text = string.Empty;
+            this.cmbOperador.Text = string.Empty;
+            this.lblResultado.Text = "0";
         }
 
         /// <summary>
@@ -54,7 +59,7 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            Limpiar();            
+            Limpiar();
         }
 
         /// <summary>
@@ -92,6 +97,53 @@ namespace MiCalculadora
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private static double Operar(string numero1, string numero2, string operando)
+        {
+            return Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando));
+        }
+
+        private void btnOperar_Click(object sender, EventArgs e)
+        {
+            string operador = this.cmbOperador.Text;
+            if (operador == string.Empty)
+            {
+                operador = "+";
+            }
+            this.lblResultado.Text = Convert.ToString(Operar(this.txtNumero1.Text, this.txtNumero2.Text, operador));
+            this.lstOperaciones.Items.Add(this.txtNumero1.Text + " " + operador + " " + this.txtNumero2.Text + " = " + this.lblResultado.Text + "\n");
+        }
+               
+
+        private void btnConvertirABinario_Click(object sender, EventArgs e)
+        {
+            Operando operando = new Operando();
+            string binario = operando.DecimalBinario(this.lblResultado.Text);
+            if (binario != "Valor Invalido")
+            {
+                this.lstOperaciones.Items.Add(this.lblResultado.Text + " (D) = " + binario + " (B)");
+            }
+            else
+            {
+                this.lstOperaciones.Items.Add(binario);
+            }
+            this.lblResultado.Text = binario;
+        }
+
+        private void btnConvertirADecimal_Click(object sender, EventArgs e)
+        {
+            Operando operando = new Operando();
+            string numero = operando.BinarioDecimal(this.lblResultado.Text);
+            if (numero != "Valor Invalido")
+            {
+                this.lstOperaciones.Items.Add(this.lblResultado.Text + " (B) = " + numero + " (D)");
+            }
+            else
+            {
+                this.lstOperaciones.Items.Add(numero);
+            }
+            this.lblResultado.Text = numero;
         }
     }
 }

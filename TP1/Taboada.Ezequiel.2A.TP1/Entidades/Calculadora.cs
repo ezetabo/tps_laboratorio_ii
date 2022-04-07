@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Entidades
 {
     public static class Calculadora
-    {
+    {       
         /// <summary>
         ///  valida que el operador recibido sea +, -, / o *. Caso contrario retornará +.
         /// </summary>

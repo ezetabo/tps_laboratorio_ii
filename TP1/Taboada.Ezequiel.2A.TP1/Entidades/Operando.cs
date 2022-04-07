@@ -21,7 +21,7 @@ namespace Entidades
         {
             set
             {
-                numero = ValidarOperando(value);
+                this.numero = ValidarOperando(value);
             }
         }
         #endregion
@@ -50,7 +50,7 @@ namespace Entidades
         /// <param name="strNumero"></param>
         public Operando(string strNumero)
         {
-            Numero = strNumero;
+            this.Numero = strNumero;
         }
         #endregion
 
@@ -151,13 +151,17 @@ namespace Entidades
             string resultado = "Valor Invalido";
             if (int.TryParse(strNumero, out int numeroEntero) && numeroEntero > -1)
             {
-                resultado = "";
-                int dato;
-                for (int i = 0; numeroEntero > 0; i++)
+                resultado = "0";
+                if (numeroEntero > 0)
                 {
-                    dato = numeroEntero % 2;
-                    numeroEntero = numeroEntero / 2;
-                    resultado = dato.ToString() + resultado;
+                    resultado = "";
+                    int dato;
+                    for (int i = 0; numeroEntero > 0; i++)
+                    {
+                        dato = numeroEntero % 2;
+                        numeroEntero = numeroEntero / 2;
+                        resultado = dato.ToString() + resultado;
+                    }
                 }
             }
             return resultado;
@@ -183,6 +187,7 @@ namespace Entidades
             string retorno = "Valor Invalido";
             if (EsBinario(binario))
             {
+                retorno = "0";
                 int resultado = 0;
                 int posicion = binario.Length;
                 foreach (char dato in binario)
@@ -193,7 +198,10 @@ namespace Entidades
                         resultado += (int)Math.Pow(2, posicion);
                     }
                 }
-                retorno = resultado.ToString();
+                if (resultado > 0)
+                {
+                    retorno = resultado.ToString();
+                }
             }
             return retorno;
         }

@@ -32,7 +32,7 @@ namespace MiCalculadora
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalculadora));
             this.lblResultado = new System.Windows.Forms.Label();
             this.cmbOperador = new System.Windows.Forms.ComboBox();
-            this.listOperaciones = new System.Windows.Forms.ListBox();
+            this.lstOperaciones = new System.Windows.Forms.ListBox();
             this.txtNumero1 = new System.Windows.Forms.TextBox();
             this.txtNumero2 = new System.Windows.Forms.TextBox();
             this.btnOperar = new System.Windows.Forms.Button();
@@ -63,16 +63,16 @@ namespace MiCalculadora
             this.cmbOperador.Size = new System.Drawing.Size(121, 33);
             this.cmbOperador.TabIndex = 1;
             // 
-            // listOperaciones
+            // lstOperaciones
             // 
-            this.listOperaciones.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listOperaciones.FormattingEnabled = true;
-            this.listOperaciones.ItemHeight = 15;
-            this.listOperaciones.Location = new System.Drawing.Point(354, 6);
-            this.listOperaciones.Name = "listOperaciones";
-            this.listOperaciones.Size = new System.Drawing.Size(218, 184);
-            this.listOperaciones.TabIndex = 2;
-            this.listOperaciones.TabStop = false;
+            this.lstOperaciones.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstOperaciones.FormattingEnabled = true;
+            this.lstOperaciones.ItemHeight = 15;
+            this.lstOperaciones.Location = new System.Drawing.Point(354, 6);
+            this.lstOperaciones.Name = "lstOperaciones";
+            this.lstOperaciones.Size = new System.Drawing.Size(218, 184);
+            this.lstOperaciones.TabIndex = 2;
+            this.lstOperaciones.TabStop = false;
             // 
             // txtNumero1
             // 
@@ -101,6 +101,7 @@ namespace MiCalculadora
             this.btnOperar.TabIndex = 3;
             this.btnOperar.Text = "Operar";
             this.btnOperar.UseVisualStyleBackColor = true;
+            this.btnOperar.Click += new System.EventHandler(this.btnOperar_Click);
             // 
             // btnLimpiar
             // 
@@ -133,6 +134,7 @@ namespace MiCalculadora
             this.btnConvertirDecimal.TabIndex = 7;
             this.btnConvertirDecimal.Text = "Convertir a Decimal";
             this.btnConvertirDecimal.UseVisualStyleBackColor = true;
+            this.btnConvertirDecimal.Click += new System.EventHandler(this.btnConvertirADecimal_Click);
             // 
             // btnConvertirBinario
             // 
@@ -143,6 +145,7 @@ namespace MiCalculadora
             this.btnConvertirBinario.TabIndex = 6;
             this.btnConvertirBinario.Text = "Convertir a Binario";
             this.btnConvertirBinario.UseVisualStyleBackColor = true;
+            this.btnConvertirBinario.Click += new System.EventHandler(this.btnConvertirABinario_Click);
             // 
             // FormCalculadora
             // 
@@ -156,7 +159,7 @@ namespace MiCalculadora
             this.Controls.Add(this.btnOperar);
             this.Controls.Add(this.txtNumero2);
             this.Controls.Add(this.txtNumero1);
-            this.Controls.Add(this.listOperaciones);
+            this.Controls.Add(this.lstOperaciones);
             this.Controls.Add(this.cmbOperador);
             this.Controls.Add(this.lblResultado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -177,7 +180,7 @@ namespace MiCalculadora
 
         private System.Windows.Forms.Label lblResultado;
         private System.Windows.Forms.ComboBox cmbOperador;
-        private System.Windows.Forms.ListBox listOperaciones;
+        private System.Windows.Forms.ListBox lstOperaciones;
         private System.Windows.Forms.TextBox txtNumero1;
         private System.Windows.Forms.TextBox txtNumero2;
         private System.Windows.Forms.Button btnOperar;
