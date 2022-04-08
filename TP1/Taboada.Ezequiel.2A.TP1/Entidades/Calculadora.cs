@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 
 namespace Entidades
-{
+{    
     public static class Calculadora
-    {       
+    {
+        #region ValidarOperador
+
         /// <summary>
         ///  valida que el operador recibido sea +, -, / o *. Caso contrario retornará +.
         /// </summary>
@@ -19,6 +21,10 @@ namespace Entidades
             return operador;
         }
 
+        #endregion
+
+        #region Operar
+
         /// <summary>
         ///  valida y realiza la operación pedida entre ambos números.
         /// </summary>
@@ -28,7 +34,7 @@ namespace Entidades
         /// <returns></returns> el valor de la operacion deseada.
         public static double Operar(Operando numero1, Operando numero2, char operador)
         {
-            double resultado = 0;
+            double resultado = double.NaN;
             if (numero1 is not null && numero2 is not null)
             {
                 switch (ValidarOperador(operador))
@@ -49,5 +55,7 @@ namespace Entidades
             }
             return resultado;
         }
+
+        #endregion
     }
 }

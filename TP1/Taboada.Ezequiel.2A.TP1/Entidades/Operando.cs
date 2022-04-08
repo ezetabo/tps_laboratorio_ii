@@ -206,6 +206,5 @@ namespace Entidades
             return retorno;
         }
         #endregion
-
     }
 }

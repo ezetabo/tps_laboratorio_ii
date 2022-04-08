@@ -82,6 +82,7 @@ namespace MiCalculadora
             this.txtNumero1.Size = new System.Drawing.Size(100, 34);
             this.txtNumero1.TabIndex = 0;
             this.txtNumero1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNumero1.TextChanged += new System.EventHandler(this.txtNumero1_TextChanged);
             // 
             // txtNumero2
             // 
@@ -91,6 +92,7 @@ namespace MiCalculadora
             this.txtNumero2.Size = new System.Drawing.Size(100, 34);
             this.txtNumero2.TabIndex = 2;
             this.txtNumero2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNumero2.TextChanged += new System.EventHandler(this.txtNumero2_TextChanged);
             // 
             // btnOperar
             // 
