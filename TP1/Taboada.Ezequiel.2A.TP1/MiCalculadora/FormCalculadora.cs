@@ -50,7 +50,7 @@ namespace MiCalculadora
         /// <returns></returns> un double son el valor de la operacion. 
         private static double Operar(string numero1, string numero2, string operando)
         {
-            return Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando));
+            return Math.Round(Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando)),2);
         }
 
         /// <summary>
