@@ -23,7 +23,7 @@ namespace MiCalculadora
         /// </summary>
         public FormCalculadora()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         #endregion
@@ -80,7 +80,7 @@ namespace MiCalculadora
             bool esDouble = true;
             bool flagPrimero = true;
             int menos = 0;
-            int coma = 0;
+            int punto = 0;
             foreach (char item in strNumero)
             {
                 if (item == '-')
@@ -94,9 +94,9 @@ namespace MiCalculadora
                 }
                 if (item == '.')
                 {
-                    coma++;
+                    punto++;
                 }
-                if (!char.IsDigit(item) && item != '.' || menos > 1 || coma > 1)
+                if (!char.IsDigit(item) && item != '.' || menos > 1 || punto > 1)
                 {
                     esDouble = false;
                     break;
@@ -111,63 +111,30 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="texto"></param>
         /// <returns></returns>
-        private static string ValidarFormato(string texto)// se puede mejorar - revisar.
+        private static string ValidarFormatoDouble(string texto)
         {
             string salida;
-            if (texto == string.Empty)
+            if (texto == string.Empty || texto.Length == 1 && (texto == "-" || texto == ".") || texto.Length == 2 && (texto[0] == '-' && texto[1] == '.'))
             {
                 salida = "0";
             }
             else
             {
-                if (texto.Length == 1)
+                if (texto[0] == '-' && texto[1] == '.')
                 {
-                    if (texto == "-")
-                    {
-                        salida = "-0";
-                    }
-                    else
-                    {
-                        if (texto == ".")
-                        {
-                            salida = "0";
-                        }
-                        else
-                        {
-                            salida = texto;
-                        }
-                    }
-
+                    salida = texto.Substring(0, 1) + '0' + texto.Substring(1);
                 }
                 else
                 {
-
-                    if (texto[0] == '-' && texto[1] == '.')
+                    if (texto[0] == '.')
                     {
-                        if (texto.Length == 2)
-                        {
-                            salida = "-0";
-                        }
-                        else
-                        {
-                            salida = texto.Substring(0, 1) + '0' + texto.Substring(1);
-                        }
-
+                        salida = "0" + texto;
                     }
                     else
                     {
-                        if (texto[0] == '.')
-                        {
-                            salida = "0" + texto;
-                        }
-                        else
-                        {
-                            salida = texto;
-                        }
-
+                        salida = texto;
                     }
                 }
-
             }
             return salida;
         }
@@ -240,8 +207,8 @@ namespace MiCalculadora
             {
                 operador = "+";
             }
-            this.lblResultado.Text = Convert.ToString(Operar(ValidarFormato(this.txtNumero1.Text), ValidarFormato(this.txtNumero2.Text), operador));
-            this.lstOperaciones.Items.Add(ValidarFormato(this.txtNumero1.Text) + " " + operador + " " + ValidarFormato(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
+            this.lblResultado.Text = Convert.ToString(Operar(ValidarFormatoDouble(this.txtNumero1.Text), ValidarFormatoDouble(this.txtNumero2.Text), operador));
+            this.lstOperaciones.Items.Add(ValidarFormatoDouble(this.txtNumero1.Text) + " " + operador + " " + ValidarFormatoDouble(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
         }
 
         /// <summary>
