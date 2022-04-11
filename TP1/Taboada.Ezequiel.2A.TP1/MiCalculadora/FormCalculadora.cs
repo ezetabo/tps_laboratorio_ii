@@ -23,12 +23,7 @@ namespace MiCalculadora
         /// </summary>
         public FormCalculadora()
         {
-            InitializeComponent();
-
-            foreach (char item in operadores)
-            {
-                this.cmbOperador.Items.Add(item);
-            }
+            InitializeComponent();           
         }
 
         #endregion
@@ -80,7 +75,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="strNumero"></param> cadena a verificar.
         /// <returns></returns> true si es numerica y del tipo DOUBLE o false en caso contrario.
-        private bool EsDouble(string strNumero)
+        private static bool EsDouble(string strNumero)
         {
             bool esDouble = true;
             bool flagPrimero = true;
@@ -116,9 +111,9 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="texto"></param>
         /// <returns></returns>
-        private string ValidarFormato(string texto)// se puede mejorar - revisar.
+        private static string ValidarFormato(string texto)// se puede mejorar - revisar.
         {
-            string salida = string.Empty;
+            string salida;
             if (texto == string.Empty)
             {
                 salida = "0";
@@ -135,7 +130,7 @@ namespace MiCalculadora
                     {
                         if (texto == ".")
                         {
-                            salida = "0.0";
+                            salida = "0";
                         }
                         else
                         {
@@ -151,7 +146,7 @@ namespace MiCalculadora
                     {
                         if (texto.Length == 2)
                         {
-                            salida = "-0.0";
+                            salida = "-0";
                         }
                         else
                         {
@@ -188,6 +183,10 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void FormCalculadora_Load(object sender, EventArgs e)
         {
+            foreach (char item in operadores)
+            {
+                this.cmbOperador.Items.Add(item);
+            }
             Limpiar();
         }
 
@@ -317,7 +316,5 @@ namespace MiCalculadora
         }
 
         #endregion
-
-
     }
 }
