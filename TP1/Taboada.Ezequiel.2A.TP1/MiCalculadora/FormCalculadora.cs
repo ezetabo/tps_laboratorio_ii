@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Entidades;
+using System.Text;
 
 namespace MiCalculadora
 {
@@ -76,11 +77,11 @@ namespace MiCalculadora
         /// <param name="strNumero"></param> cadena a verificar.
         /// <returns></returns> true si es numerica y del tipo DOUBLE o false en caso contrario.
         private static bool EsDouble(string strNumero)
-        {
+        {            
             bool esDouble = true;
             bool flagPrimero = true;
             int menos = 0;
-            int punto = 0;
+            int punto = 0;           
             foreach (char item in strNumero)
             {
                 if (item == '-')
@@ -139,6 +140,17 @@ namespace MiCalculadora
             return salida;
         }
 
+        /// <summary>
+        /// recibe una cadena y retorna una copia reemplazando las ',' por '.' .
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
+        private string CambiarComaAPunto(string cadena)
+        {
+            StringBuilder sb = new StringBuilder(cadena);
+            sb.Replace(',', '.');
+            return sb.ToString();
+        }
         #endregion|
 
         #region Evento_Load
@@ -207,7 +219,7 @@ namespace MiCalculadora
             {
                 operador = "+";
             }
-            this.lblResultado.Text = Convert.ToString(Operar(ValidarFormatoDouble(this.txtNumero1.Text), ValidarFormatoDouble(this.txtNumero2.Text), operador));
+            this.lblResultado.Text = Convert.ToString(Operar(ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text)), ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text)), operador));
             this.lstOperaciones.Items.Add(ValidarFormatoDouble(this.txtNumero1.Text) + " " + operador + " " + ValidarFormatoDouble(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
         }
 
@@ -261,7 +273,7 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void txtNumero1_TextChanged(object sender, EventArgs e)
         {
-            if (!EsDouble(this.txtNumero1.Text))
+            if (!EsDouble(CambiarComaAPunto(this.txtNumero1.Text)))
             {
                 MessageBox.Show("Por favor ingrese un dato numerico", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtNumero1.Text = string.Empty;
@@ -275,7 +287,7 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void txtNumero2_TextChanged(object sender, EventArgs e)
         {
-            if (!EsDouble(this.txtNumero2.Text))
+            if (!EsDouble(CambiarComaAPunto(this.txtNumero2.Text)))
             {
                 MessageBox.Show("Por favor ingrese un dato numerico", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtNumero2.Text = string.Empty;
