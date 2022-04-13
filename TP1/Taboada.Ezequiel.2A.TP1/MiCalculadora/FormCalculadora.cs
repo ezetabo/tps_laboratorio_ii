@@ -51,7 +51,7 @@ namespace MiCalculadora
         /// <returns></returns> un double son el valor de la operacion. 
         private static double Operar(string numero1, string numero2, string operando)
         {
-            return Math.Round(Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando)),2);
+            return Math.Round(Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando)), 2);
         }
 
         /// <summary>
@@ -77,11 +77,11 @@ namespace MiCalculadora
         /// <param name="strNumero"></param> cadena a verificar.
         /// <returns></returns> true si es numerica y del tipo DOUBLE o false en caso contrario.
         private static bool EsDouble(string strNumero)
-        {            
+        {
             bool esDouble = true;
             bool flagPrimero = true;
             int menos = 0;
-            int punto = 0;           
+            int punto = 0;
             foreach (char item in strNumero)
             {
                 if (item == '-')
@@ -215,12 +215,22 @@ namespace MiCalculadora
         private void btnOperar_Click(object sender, EventArgs e)
         {
             string operador = this.cmbOperador.Text;
+            double resultado = Operar(ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text)), ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text)), operador);
             if (operador == string.Empty)
             {
                 operador = "+";
             }
-            this.lblResultado.Text = Convert.ToString(Operar(ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text)), ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text)), operador));
-            this.lstOperaciones.Items.Add(ValidarFormatoDouble(this.txtNumero1.Text) + " " + operador + " " + ValidarFormatoDouble(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
+
+            if (resultado == double.MinValue)
+            {
+                this.lblResultado.Text = "No se puede dividir entre cero";
+                this.lstOperaciones.Items.Add(this.lblResultado.Text);
+            }
+            else
+            {
+                this.lblResultado.Text = Convert.ToString(operador);
+                this.lstOperaciones.Items.Add(ValidarFormatoDouble(this.txtNumero1.Text) + " " + operador + " " + ValidarFormatoDouble(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
+            }
         }
 
         /// <summary>
