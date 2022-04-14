@@ -14,7 +14,7 @@ namespace MiCalculadora
         /// lista con los operadores matematicos.
         /// </summary>
         private List<char> operadores = new List<char>() { ' ', '+', '-', '*', '/' };
-
+        
         #endregion
 
         #region Constructor
@@ -39,7 +39,7 @@ namespace MiCalculadora
             this.txtNumero1.Text = string.Empty;
             this.txtNumero2.Text = string.Empty;
             this.cmbOperador.SelectedIndex = -1;
-            this.lblResultado.Text = "0";
+            this.lblResultado.Text = "0";            
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace MiCalculadora
             else
             {
                 this.lblResultado.Text = resultado.ToString();
-                this.lstOperaciones.Items.Add($"{numero1} {operador} {numero2}  =  {resultado}");
+                this.lstOperaciones.Items.Add($"{Convert.ToDouble(numero1)} {operador} {Convert.ToDouble(numero2)}  =  {resultado}");
             }
         }
 
