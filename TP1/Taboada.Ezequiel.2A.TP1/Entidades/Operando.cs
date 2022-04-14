@@ -150,12 +150,12 @@ namespace Entidades
                 resultado = "0";
                 if (numeroEntero > 0)
                 {
-                    resultado = "";
+                    resultado = string.Empty;
                     int dato;
                     for (int i = 0; numeroEntero > 0; i++)
                     {
                         dato = numeroEntero % 2;
-                        numeroEntero = numeroEntero / 2;
+                        numeroEntero /= 2;
                         resultado = dato.ToString() + resultado;
                     }
                 }

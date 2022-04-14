@@ -51,6 +51,10 @@ namespace MiCalculadora
         /// <returns></returns> un double son el valor de la operacion. 
         private static double Operar(string numero1, string numero2, string operando)
         {
+            if (string.IsNullOrEmpty(operando))
+            {
+                operando = " ";
+            }
             return Math.Round(Calculadora.Operar(new Operando(numero1), new Operando(numero2), char.Parse(operando)), 2);
         }
 
@@ -215,7 +219,9 @@ namespace MiCalculadora
         private void btnOperar_Click(object sender, EventArgs e)
         {
             string operador = this.cmbOperador.Text;
-            double resultado = Operar(ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text)), ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text)), operador);
+            string numero1 = ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text));
+            string numero2 = ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text));
+            double resultado = Operar(numero1, numero2, operador);
             if (operador == string.Empty)
             {
                 operador = "+";
@@ -228,8 +234,8 @@ namespace MiCalculadora
             }
             else
             {
-                this.lblResultado.Text = Convert.ToString(operador);
-                this.lstOperaciones.Items.Add(ValidarFormatoDouble(this.txtNumero1.Text) + " " + operador + " " + ValidarFormatoDouble(this.txtNumero2.Text) + " = " + this.lblResultado.Text + "\n");
+                this.lblResultado.Text = resultado.ToString();
+                this.lstOperaciones.Items.Add($"{numero1} {operador} {numero2}  =  {resultado}");
             }
         }
 
