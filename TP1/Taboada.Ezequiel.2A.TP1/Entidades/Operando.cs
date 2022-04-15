@@ -26,16 +26,16 @@ namespace Entidades
         /// <summary>
         /// constructor por defecto, asigna valor 0 al atributo numero.
         /// </summary>
-        public Operando() : this(0)
+        public Operando() 
         {
-
+            this.numero = 0;
         }
 
         /// <summary>
         /// constructor parametrizado, asigna valor al atributo numero.
         /// </summary>
         /// <param name="numero"></param>
-        public Operando(double numero)
+        public Operando(double numero):this()
         {
             this.numero = numero;
         }
@@ -56,7 +56,7 @@ namespace Entidades
         /// </summary>
         /// <param name="strNumero"></param> valor a validar que sea numerico.
         /// <returns></returns> un double con el valor de dato recido en caso de ser valido, sino el valor 0.
-        private double ValidarOperando(string strNumero)
+        private static double ValidarOperando(string strNumero)
         {
             if (!double.TryParse(strNumero, out double numero))
             {
@@ -70,7 +70,7 @@ namespace Entidades
         /// </summary>
         /// <param name="binario"></param> cadena a validar.
         /// <returns></returns> true en caso de ser solo 1 o 0. False en caso de no ser solo 1 o 0.
-        private bool EsBinario(string binario)
+        private static bool EsBinario(string binario)
         {
             bool retorno = true;
             foreach (char item in binario)
@@ -142,7 +142,7 @@ namespace Entidades
         /// </summary>
         /// <param name="strNumero"></param>
         /// <returns></returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido".
-        public string DecimalBinario(string strNumero)
+        public static string DecimalBinario(string strNumero)
         {
             string resultado = "Valor Invalido";
             if (int.TryParse(strNumero, out int numeroEntero) && numeroEntero > -1)
@@ -168,7 +168,7 @@ namespace Entidades
         /// </summary>
         /// <param name="numero"></param>
         /// <returns></returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido".
-        public string DecimalBinario(double numero)
+        public static string DecimalBinario(double numero)
         {
             return DecimalBinario(numero.ToString());
         }
@@ -178,7 +178,7 @@ namespace Entidades
         /// </summary>
         /// <param name="binario"></param>
         /// <returns></returns> de ser posible el numero convertido a decimal, caso contrario "Valor inválido".
-        public string BinarioDecimal(string binario)
+        public static string BinarioDecimal(string binario)
         {
             string retorno = "Valor Invalido";
             if (EsBinario(binario))

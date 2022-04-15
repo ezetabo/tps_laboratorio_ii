@@ -64,7 +64,7 @@ namespace MiCalculadora
         /// <param name="mensaje"></param>
         /// <param name="titulo"></param>
         /// <returns></returns> true en caso de si y false en caso de no.
-        private bool Confirmar(string mensaje, string titulo)
+        private static bool Confirmar(string mensaje, string titulo)
         {
             bool retorno = false;
             DialogResult respuesta = MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -149,7 +149,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="cadena"></param>
         /// <returns></returns>
-        private string CambiarComaAPunto(string cadena)
+        private static string CambiarComaAPunto(string cadena)
         {
             StringBuilder sb = new StringBuilder(cadena);
             sb.Replace(',', '.');
@@ -196,7 +196,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnLimpiar_Click(object sender, EventArgs e)
+        private void BtnLimpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
         }
@@ -206,7 +206,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -216,7 +216,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOperar_Click(object sender, EventArgs e)
+        private void BtnOperar_Click(object sender, EventArgs e)
         {
             string operador = this.cmbOperador.Text;
             string numero1 = ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text));
@@ -244,10 +244,9 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnConvertirABinario_Click(object sender, EventArgs e)
-        {
-            Operando operando = new Operando();
-            string binario = operando.DecimalBinario(this.lblResultado.Text);
+        private void BtnConvertirABinario_Click(object sender, EventArgs e)
+        {            
+            string binario = Operando.DecimalBinario(this.lblResultado.Text);
             if (binario != "Valor Invalido")
             {
                 this.lstOperaciones.Items.Add(this.lblResultado.Text + " (D) = " + binario + " (B)");
@@ -264,10 +263,9 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnConvertirADecimal_Click(object sender, EventArgs e)
-        {
-            Operando operando = new Operando();
-            string numero = operando.BinarioDecimal(this.lblResultado.Text);
+        private void BtnConvertirADecimal_Click(object sender, EventArgs e)
+        {           
+            string numero = Operando.BinarioDecimal(this.lblResultado.Text);
             if (numero != "Valor Invalido")
             {
                 this.lstOperaciones.Items.Add(this.lblResultado.Text + " (B) = " + numero + " (D)");
@@ -287,7 +285,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtNumero1_TextChanged(object sender, EventArgs e)
+        private void TxtNumero1_TextChanged(object sender, EventArgs e)
         {
             if (!EsDouble(CambiarComaAPunto(this.txtNumero1.Text)))
             {
@@ -301,7 +299,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtNumero2_TextChanged(object sender, EventArgs e)
+        private void TxtNumero2_TextChanged(object sender, EventArgs e)
         {
             if (!EsDouble(CambiarComaAPunto(this.txtNumero2.Text)))
             {
