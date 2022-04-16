@@ -45,10 +45,10 @@ namespace MiCalculadora
         /// <summary>
         /// recibe dos números y un operador, realiza la operacion matematica y retorna el resultado.
         /// </summary>
-        /// <param name="numero1"></param> primer numero.
-        /// <param name="numero2"></param> segundo numero.
-        /// <param name="operando"></param> operador matematico.
-        /// <returns></returns> un double son el valor de la operacion. 
+        /// <param name="numero1"> primer numero </param>
+        /// <param name="numero2"> segundo numero </param>
+        /// <param name="operando"> operador matematico </param>
+        /// <returns> un double son el valor de la operacion </returns>
         private static double Operar(string numero1, string numero2, string operando)
         {
             if (string.IsNullOrEmpty(operando))
@@ -63,7 +63,7 @@ namespace MiCalculadora
         /// </summary>
         /// <param name="mensaje"></param>
         /// <param name="titulo"></param>
-        /// <returns></returns> true en caso de si y false en caso de no.
+        /// <returns> true en caso de si y false en caso de no </returns>
         private static bool Confirmar(string mensaje, string titulo)
         {
             bool retorno = false;
@@ -78,8 +78,8 @@ namespace MiCalculadora
         /// <summary>
         /// valida que la cadena recibida sea numerica y del tipo DOUBLE.
         /// </summary>
-        /// <param name="strNumero"></param> cadena a verificar.
-        /// <returns></returns> true si es numerica y del tipo DOUBLE o false en caso contrario.
+        /// <param name="strNumero"> cadena a verificar </param>
+        /// <returns> true si es numerica y del tipo DOUBLE o false en caso contrario </returns>
         private static bool EsDouble(string strNumero)
         {
             bool esDouble = true;
@@ -115,7 +115,7 @@ namespace MiCalculadora
         /// revisa el string con formato numerico y agrega el 0 inicial en caso de omision.
         /// </summary>
         /// <param name="texto"></param>
-        /// <returns></returns>
+        /// <returns> cadena con formato de double </returns>
         private static string ValidarFormatoDouble(string texto)
         {
             string salida;
@@ -148,7 +148,7 @@ namespace MiCalculadora
         /// recibe una cadena y retorna una copia reemplazando las ',' por '.' .
         /// </summary>
         /// <param name="cadena"></param>
-        /// <returns></returns>
+        /// <returns> cadena modificada </returns>
         private static string CambiarComaAPunto(string cadena)
         {
             StringBuilder sb = new StringBuilder(cadena);
@@ -160,7 +160,7 @@ namespace MiCalculadora
         #region Evento_Load
 
         /// <summary>
-        /// llama al método Limpiar.
+        /// llama al método Limpiar y carga el comboBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

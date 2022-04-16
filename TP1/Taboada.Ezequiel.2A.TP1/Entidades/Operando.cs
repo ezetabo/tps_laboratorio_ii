@@ -34,7 +34,7 @@ namespace Entidades
         /// <summary>
         /// constructor parametrizado, asigna valor al atributo numero.
         /// </summary>
-        /// <param name="numero"></param>
+        /// <param name="numero"> valor para el atributo numero </param>
         public Operando(double numero):this()
         {
             this.numero = numero;
@@ -43,7 +43,7 @@ namespace Entidades
         /// <summary>
         /// constructor parametrizado, asigna valor al atributo numero.
         /// </summary>
-        /// <param name="strNumero"></param>
+        /// <param name="strNumero"> cadena con el valor para el atributo numero </param>
         public Operando(string strNumero)
         {
             this.Numero = strNumero;
@@ -54,8 +54,8 @@ namespace Entidades
         /// <summary>
         /// comprueba que el valor recibido sea numérico, y lo retornará en formato double. Caso contrario, retornará 0.
         /// </summary>
-        /// <param name="strNumero"></param> valor a validar que sea numerico.
-        /// <returns></returns> un double con el valor de dato recido en caso de ser valido, sino el valor 0.
+        /// <param name="strNumero"> valor a validar que sea numerico </param>
+        /// <returns> un double con el valor de dato recido en caso de ser valido, sino el valor 0 </returns>
         private static double ValidarOperando(string strNumero)
         {
             if (!double.TryParse(strNumero, out double numero))
@@ -89,9 +89,9 @@ namespace Entidades
         /// <summary>
         ///  realiza la operacion sumar entre los dos números.
         /// </summary>
-        /// <param name="n1"></param> numero 1.
-        /// <param name="n2"></param> numero 2.
-        /// <returns></returns> resultado de la operacion.
+        /// <param name="n1"> numero 1 </param>
+        /// <param name="n2"> numero 2 </param>
+        /// <returns> resultado de la operacion </returns>
         public static double operator +(Operando n1, Operando n2)
         {
             return n1.numero + n2.numero;
@@ -100,7 +100,7 @@ namespace Entidades
         /// <summary>
         ///  realiza la operacion restar entre los dos números.
         /// </summary>
-        /// <param name="n1"></param> numero 1.
+        /// <param name="n1"> numero 1 </param>
         /// <param name="n2"></param> numero 2.
         /// <returns></returns> resultado de la operacion.
         public static double operator -(Operando n1, Operando n2)
@@ -113,7 +113,7 @@ namespace Entidades
         /// </summary>
         /// <param name="n1"></param> numero 1.
         /// <param name="n2"></param> numero 2.
-        /// <returns></returns> resultado de la operacion.
+        /// <returns> resultado de la operacion </returns>
         public static double operator *(Operando n1, Operando n2)
         {
             return n1.numero * n2.numero;
@@ -122,9 +122,9 @@ namespace Entidades
         /// <summary>
         ///  realiza la operacion dividir entre los dos números.
         /// </summary>
-        /// <param name="n1"></param> numero 1.
-        /// <param name="n2"></param> numero 2.
-        /// <returns></returns> resultado de la operacion, en caso de una división por 0, retornará double.MinValue.
+        /// <param name="n1"> numero 1 </param>
+        /// <param name="n2"> numero 2 </param>
+        /// <returns> resultado de la operacion, en caso de una división por 0, retornará double.MinValue </returns>
         public static double operator /(Operando n1, Operando n2)
         {
             double resultado = double.MinValue;
@@ -138,10 +138,10 @@ namespace Entidades
 
         #region Conversores
         /// <summary>
-        /// convierte un número decimal a binario, de no ser posible retornará "Valor inválido".
+        /// convierte un número decimal a binario, de no ser posible retornará "Valor inválido"
         /// </summary>
-        /// <param name="strNumero"></param>
-        /// <returns></returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido".
+        /// <param name="strNumero"> numero a convertir </param>
+        /// <returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido" </returns>
         public static string DecimalBinario(string strNumero)
         {
             string resultado = "Valor Invalido";
@@ -166,8 +166,8 @@ namespace Entidades
         /// <summary>
         /// convierte un número decimal a binario, de no ser posible retornará "Valor inválido".
         /// </summary>
-        /// <param name="numero"></param>
-        /// <returns></returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido".
+        /// <param name="numero"> numero a convertir </param>
+        /// <returns> de ser posible el numero convertido a binario, caso contrario "Valor inválido" </returns>
         public static string DecimalBinario(double numero)
         {
             return DecimalBinario(numero.ToString());
@@ -176,8 +176,8 @@ namespace Entidades
         /// <summary>
         /// valida que se trate de un numero binario y lo convierte a decimal, en caso de no ser posible retornará "Valor inválido".
         /// </summary>
-        /// <param name="binario"></param>
-        /// <returns></returns> de ser posible el numero convertido a decimal, caso contrario "Valor inválido".
+        /// <param name="binario"> numero a convertir </param>
+        /// <returns> de ser posible el numero convertido a decimal, caso contrario "Valor inválido" </returns>
         public static string BinarioDecimal(string binario)
         {
             string retorno = "Valor Invalido";
