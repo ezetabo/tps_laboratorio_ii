@@ -44,7 +44,7 @@ namespace Entidades
         /// constructor parametrizado, asigna valor al atributo numero.
         /// </summary>
         /// <param name="strNumero"> cadena con el valor para el atributo numero </param>
-        public Operando(string strNumero)
+        public Operando(string strNumero):this(0)
         {
             this.Numero = strNumero;
         }

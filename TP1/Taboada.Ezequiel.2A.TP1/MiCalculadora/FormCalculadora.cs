@@ -14,7 +14,7 @@ namespace MiCalculadora
         /// lista con los operadores matematicos.
         /// </summary>
         private List<char> operadores = new List<char>() { ' ', '+', '-', '*', '/' };
-        
+
         #endregion
 
         #region Constructor
@@ -39,7 +39,7 @@ namespace MiCalculadora
             this.txtNumero1.Text = string.Empty;
             this.txtNumero2.Text = string.Empty;
             this.cmbOperador.SelectedIndex = -1;
-            this.lblResultado.Text = "0";            
+            this.lblResultado.Text = "0";
         }
 
         /// <summary>
@@ -110,52 +110,7 @@ namespace MiCalculadora
             }
             return esDouble;
         }
-
-        /// <summary>
-        /// revisa el string con formato numerico y agrega el 0 inicial en caso de omision.
-        /// </summary>
-        /// <param name="texto"></param>
-        /// <returns> cadena con formato de double </returns>
-        private static string ValidarFormatoDouble(string texto)
-        {
-            string salida;
-            if (texto == string.Empty || texto.Length == 1 && (texto == "-" || texto == ".") || texto.Length == 2 && (texto[0] == '-' && texto[1] == '.'))
-            {
-                salida = "0";
-            }
-            else
-            {
-                if (texto[0] == '-' && texto[1] == '.')
-                {
-                    salida = texto.Substring(0, 1) + '0' + texto.Substring(1);
-                }
-                else
-                {
-                    if (texto[0] == '.')
-                    {
-                        salida = "0" + texto;
-                    }
-                    else
-                    {
-                        salida = texto;
-                    }
-                }
-            }
-            return salida;
-        }
-
-        /// <summary>
-        /// recibe una cadena y retorna una copia reemplazando las ',' por '.' .
-        /// </summary>
-        /// <param name="cadena"></param>
-        /// <returns> cadena modificada </returns>
-        private static string CambiarComaAPunto(string cadena)
-        {
-            StringBuilder sb = new StringBuilder(cadena);
-            sb.Replace(',', '.');
-            return sb.ToString();
-        }
-        #endregion|
+        #endregion
 
         #region Evento_Load
 
@@ -219,12 +174,23 @@ namespace MiCalculadora
         private void BtnOperar_Click(object sender, EventArgs e)
         {
             string operador = this.cmbOperador.Text;
-            string numero1 = ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero1.Text));
-            string numero2 = ValidarFormatoDouble(CambiarComaAPunto(this.txtNumero2.Text));
+            string numero1 = this.txtNumero1.Text.Replace(',', '.');
+            string numero2 = this.txtNumero2.Text.Replace(',', '.');
             double resultado = Operar(numero1, numero2, operador);
-            if (operador == string.Empty)
+
+            if (string.IsNullOrEmpty(operador))
             {
                 operador = "+";
+            }
+
+            if (string.IsNullOrEmpty(numero1) || !double.TryParse(numero1,out double num1))
+            {
+                numero1 = "0";
+            }
+
+            if (string.IsNullOrEmpty(numero2) || !double.TryParse(numero2, out double num2))
+            {
+                numero2 = "0";
             }
 
             if (resultado == double.MinValue)
@@ -245,7 +211,7 @@ namespace MiCalculadora
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnConvertirABinario_Click(object sender, EventArgs e)
-        {            
+        {
             string binario = Operando.DecimalBinario(this.lblResultado.Text);
             if (binario != "Valor Invalido")
             {
@@ -264,7 +230,7 @@ namespace MiCalculadora
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnConvertirADecimal_Click(object sender, EventArgs e)
-        {           
+        {
             string numero = Operando.BinarioDecimal(this.lblResultado.Text);
             if (numero != "Valor Invalido")
             {
@@ -287,7 +253,7 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void TxtNumero1_TextChanged(object sender, EventArgs e)
         {
-            if (!EsDouble(CambiarComaAPunto(this.txtNumero1.Text)))
+            if (!EsDouble(this.txtNumero1.Text.Replace(',', '.')))
             {
                 MessageBox.Show("Por favor ingrese un dato numerico", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtNumero1.Text = string.Empty;
@@ -301,7 +267,7 @@ namespace MiCalculadora
         /// <param name="e"></param>
         private void TxtNumero2_TextChanged(object sender, EventArgs e)
         {
-            if (!EsDouble(CambiarComaAPunto(this.txtNumero2.Text)))
+            if (!EsDouble(this.txtNumero2.Text.Replace(',', '.')))
             {
                 MessageBox.Show("Por favor ingrese un dato numerico", "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.txtNumero2.Text = string.Empty;
