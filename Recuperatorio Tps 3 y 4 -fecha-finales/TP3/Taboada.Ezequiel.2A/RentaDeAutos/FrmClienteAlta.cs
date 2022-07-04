@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 
@@ -57,7 +52,7 @@ namespace RentaDeAutos
         {
             if (VerificarCarga())
             {
-                cliente = new Cliente(dni, nombre, apeliido, telefono);
+                this.cliente = new Cliente(dni, nombre, apeliido, telefono);
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -68,7 +63,7 @@ namespace RentaDeAutos
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            if (!Validador.TryParseNombre(this.txtNombre.Text, out nombre))
+            if (!Validador.TryParseNombre(this.txtNombre.Text, out this.nombre))
             {
                 MessageBox.Show("Nombre no Valido");
                 this.txtNombre.Clear();
