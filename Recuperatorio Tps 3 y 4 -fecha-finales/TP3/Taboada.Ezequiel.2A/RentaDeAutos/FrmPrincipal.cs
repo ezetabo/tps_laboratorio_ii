@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using ControlArchivos;
@@ -20,7 +13,7 @@ namespace RentaDeAutos
         private ControlListas<Vehiculo> vehiculos;
         private Serializador<ControlListas<Cliente>> serializadorClientes;
         private Serializador<ControlListas<Vehiculo>> serializadorVehiculos;
-        string path = AppDomain.CurrentDomain.BaseDirectory;
+
 
         public ControlListas<Cliente> Clientes { get => clientes; set => clientes = value; }
         public ControlListas<Vehiculo> Vehiculos { get => vehiculos; set => vehiculos = value; }
@@ -38,12 +31,12 @@ namespace RentaDeAutos
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            this.clientes = serializadorClientes.Leer("clientes.json");
-            this.vehiculos = serializadorVehiculos.Leer("vehiculos.xml");
+            this.clientes = serializadorClientes.Leer(Archivo.ObtenerRuta("clientes.json"));
+            this.vehiculos = serializadorVehiculos.Leer(Archivo.ObtenerRuta("vehiculos.xml"));
         }
 
         #region ToolStrip
-
+               
         private void toolSalir_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
@@ -67,11 +60,11 @@ namespace RentaDeAutos
             }
             else
             {
-                if (serializadorClientes.Escribir("clientes.json", clientes) && serializadorVehiculos.Escribir("vehiculos.xml", vehiculos))
+                if (serializadorClientes.Escribir("clientes.json", clientes) && serializadorVehiculos.Escribir("vehiculos.xml",vehiculos))
                 {
                     MessageBox.Show("Archivos Guardados con exito", "Guardado de archivos", MessageBoxButtons.OK);
                 }
-
+               
             }
         }
 
@@ -87,10 +80,6 @@ namespace RentaDeAutos
                 clientes.MdiParent = this;
                 clientes.Show();
             }
-        }
-
-        private void toolInformes_Click(object sender, EventArgs e)
-        {
         }
 
         private void toolVehiculos_Click(object sender, EventArgs e)
@@ -119,7 +108,7 @@ namespace RentaDeAutos
                 frmAlquilar.MdiParent = this;
                 frmAlquilar.Show();
             }
-
+            
         }
     }
 }

@@ -32,7 +32,7 @@ namespace RentaDeAutos
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClientes));
             this.gpbCliente = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDni = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@ namespace RentaDeAutos
             // gpbCliente
             // 
             this.gpbCliente.Controls.Add(this.label1);
-            this.gpbCliente.Controls.Add(this.txtDni);
+            this.gpbCliente.Controls.Add(this.textBox1);
             this.gpbCliente.Controls.Add(this.btnAgregar);
             this.gpbCliente.Controls.Add(this.btnEditar);
             this.gpbCliente.Controls.Add(this.btnEliminar);
@@ -55,7 +55,7 @@ namespace RentaDeAutos
             this.gpbCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gpbCliente.Location = new System.Drawing.Point(54, 144);
             this.gpbCliente.Name = "gpbCliente";
-            this.gpbCliente.Size = new System.Drawing.Size(910, 375);
+            this.gpbCliente.Size = new System.Drawing.Size(784, 375);
             this.gpbCliente.TabIndex = 29;
             this.gpbCliente.TabStop = false;
             this.gpbCliente.Text = "Clientes";
@@ -69,20 +69,19 @@ namespace RentaDeAutos
             this.label1.TabIndex = 31;
             this.label1.Text = "D.N.I";
             // 
-            // txtDni
+            // textBox1
             // 
-            this.txtDni.Location = new System.Drawing.Point(92, 28);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(252, 23);
-            this.txtDni.TabIndex = 32;
-            this.txtDni.TextChanged += new System.EventHandler(this.txtDni_TextChanged);
+            this.textBox1.Location = new System.Drawing.Point(92, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(165, 23);
+            this.textBox1.TabIndex = 32;
             // 
             // btnAgregar
             // 
             this.btnAgregar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAgregar.BackgroundImage")));
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(422, 22);
+            this.btnAgregar.Location = new System.Drawing.Point(349, 22);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(29, 29);
             this.btnAgregar.TabIndex = 9;
@@ -94,7 +93,7 @@ namespace RentaDeAutos
             this.btnEditar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditar.BackgroundImage")));
             this.btnEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Location = new System.Drawing.Point(387, 22);
+            this.btnEditar.Location = new System.Drawing.Point(314, 22);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(29, 29);
             this.btnEditar.TabIndex = 7;
@@ -106,7 +105,7 @@ namespace RentaDeAutos
             this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(457, 22);
+            this.btnEliminar.Location = new System.Drawing.Point(384, 22);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(29, 29);
             this.btnEliminar.TabIndex = 6;
@@ -118,7 +117,7 @@ namespace RentaDeAutos
             this.btnLimpiar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.BackgroundImage")));
             this.btnLimpiar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Location = new System.Drawing.Point(350, 22);
+            this.btnLimpiar.Location = new System.Drawing.Point(277, 22);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(29, 29);
             this.btnLimpiar.TabIndex = 5;
@@ -135,7 +134,7 @@ namespace RentaDeAutos
             this.dataGridView1.Location = new System.Drawing.Point(28, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(876, 309);
+            this.dataGridView1.Size = new System.Drawing.Size(738, 309);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -179,6 +178,6 @@ namespace RentaDeAutos
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

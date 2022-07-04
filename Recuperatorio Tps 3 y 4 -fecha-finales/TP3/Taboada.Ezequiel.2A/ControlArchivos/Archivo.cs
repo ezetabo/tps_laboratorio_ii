@@ -5,14 +5,12 @@ namespace ControlArchivos
 {
     public class Archivo : IArchivos<string>
     {
-        
-        public bool Escribir(string nombre, string dato)
+        public bool Escribir(string ruta, string dato)
         {
-            bool ok = false;          
-            
+            bool ok = false;
             try
-            {               
-                using (StreamWriter sw = new StreamWriter(nombre))
+            {
+                using (StreamWriter sw = new StreamWriter(ruta))
                 {
                     sw.WriteLine(dato);
                     ok = true;
@@ -26,13 +24,13 @@ namespace ControlArchivos
             return ok;
         }
        
-        public string Leer(string nombre)
+        public string Leer(string ruta)
         {
             string rtn = string.Empty;
 
             try
-            {               
-                using (StreamReader sr = new StreamReader(nombre))
+            {
+                using (StreamReader sr = new StreamReader(ruta))
                 {
 
                     while (!sr.EndOfStream)

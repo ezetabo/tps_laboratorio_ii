@@ -9,9 +9,6 @@ namespace Prueba_Consola
     {
         static void Main(string[] args)
         {
-
-            
-
             Serializador<ControlListas<Cliente>> serializadorClientes = new Serializador<ControlListas<Cliente>>(ETipoExtenxion.Json);
             Serializador<ControlListas<Vehiculo>> serializadorVehiculos = new Serializador<ControlListas<Vehiculo>>(ETipoExtenxion.Json);
 

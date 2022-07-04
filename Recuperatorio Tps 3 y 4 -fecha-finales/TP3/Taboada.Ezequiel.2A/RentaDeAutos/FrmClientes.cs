@@ -53,6 +53,23 @@ namespace RentaDeAutos
             }
         }
 
+        private void txtPatente_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.textBox1.Text))
+            {
+                List<Cliente> aux = new List<Cliente>();
+                foreach (Cliente  item in this.clientes.Lista)
+                {
+                    if (item.Dni.StartsWith(this.textBox1.Text.ToUpper()))
+                    {
+                        aux.Add(item);
+                    }
+                }
+                this.dataGridView1.DataSource = aux;
+            }
+
+        }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Limpar();
@@ -61,7 +78,7 @@ namespace RentaDeAutos
         private void Limpar()
         {
             this.dataGridView1.DataSource = null;
-            this.txtDni.Text = null;
+            this.textBox1.Text = null;
             this.dataGridView1.DataSource = this.clientes.Lista;
         }
            
@@ -89,22 +106,6 @@ namespace RentaDeAutos
         {
             this.cliente = (Cliente)this.dataGridView1.CurrentRow.DataBoundItem;
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void txtDni_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(this.txtDni.Text))
-            {
-                List<Cliente> aux = new List<Cliente>();
-                foreach (Cliente item in this.clientes.Lista)
-                {
-                    if (item.Dni.StartsWith(this.txtDni.Text.ToUpper()))
-                    {
-                        aux.Add(item);
-                    }
-                }
-                this.dataGridView1.DataSource = aux;
-            }
         }
     }
 }
