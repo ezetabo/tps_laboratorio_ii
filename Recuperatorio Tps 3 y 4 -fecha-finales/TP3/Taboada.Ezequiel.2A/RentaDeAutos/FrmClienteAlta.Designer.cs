@@ -45,17 +45,21 @@ namespace RentaDeAutos
             // 
             // textBox1
             // 
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.textBox1.Validated += new System.EventHandler(this.textBox1_Validated);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(64, 178);
+            this.button1.TabIndex = 4;
             this.button1.Text = "Agregar";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(156, 178);
+            this.button2.TabIndex = 5;
             this.button2.Text = "Cancelar";
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -75,7 +79,7 @@ namespace RentaDeAutos
             this.txtNombre.Location = new System.Drawing.Point(12, 56);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(135, 23);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtApellido
@@ -83,7 +87,7 @@ namespace RentaDeAutos
             this.txtApellido.Location = new System.Drawing.Point(12, 85);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(135, 23);
-            this.txtApellido.TabIndex = 10;
+            this.txtApellido.TabIndex = 2;
             this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // txtTelefono
@@ -91,7 +95,8 @@ namespace RentaDeAutos
             this.txtTelefono.Location = new System.Drawing.Point(12, 114);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(135, 23);
-            this.txtTelefono.TabIndex = 11;
+            this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.Validated += new System.EventHandler(this.txtTelefono_Validated);
             // 
             // label2
             // 

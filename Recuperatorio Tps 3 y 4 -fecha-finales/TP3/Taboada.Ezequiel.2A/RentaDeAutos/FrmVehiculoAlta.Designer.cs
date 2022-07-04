@@ -44,8 +44,9 @@ namespace RentaDeAutos
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 15);
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.Location = new System.Drawing.Point(6, 15);           
+            this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
+            this.textBox1.Validated += new System.EventHandler(this.textBox1_Validated);
             // 
             // button1
             // 

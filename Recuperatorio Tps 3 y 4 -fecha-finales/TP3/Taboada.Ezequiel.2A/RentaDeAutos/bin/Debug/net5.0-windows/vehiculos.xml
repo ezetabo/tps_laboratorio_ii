@@ -5,21 +5,21 @@
       <Patente>AA 458 BB</Patente>
       <Clasificcacion>Economico</Clasificcacion>
       <Color>Yellow</Color>
-      <Alquilado>true</Alquilado>
+      <Alquilado>false</Alquilado>
       <Costo>7388</Costo>
     </Vehiculo>
     <Vehiculo>
       <Patente>AB 648 AD</Patente>
       <Clasificcacion>Superior</Clasificcacion>
       <Color>DarkCyan</Color>
-      <Alquilado>true</Alquilado>
+      <Alquilado>false</Alquilado>
       <Costo>8522</Costo>
     </Vehiculo>
     <Vehiculo>
       <Patente>AA 000 MN</Patente>
       <Clasificcacion>Superior</Clasificcacion>
       <Color>Magenta</Color>
-      <Alquilado>true</Alquilado>
+      <Alquilado>false</Alquilado>
       <Costo>16720</Costo>
     </Vehiculo>
     <Vehiculo>
@@ -54,7 +54,7 @@
       <Patente>BC 145 FC</Patente>
       <Clasificcacion>Van</Clasificcacion>
       <Color>Yellow</Color>
-      <Alquilado>true</Alquilado>
+      <Alquilado>false</Alquilado>
       <Costo>19612</Costo>
     </Vehiculo>
     <Vehiculo>
@@ -70,6 +70,20 @@
       <Color>Blue</Color>
       <Alquilado>false</Alquilado>
       <Costo>10952</Costo>
+    </Vehiculo>
+    <Vehiculo>
+      <Patente>AB 123 CD</Patente>
+      <Clasificcacion>Economico</Clasificcacion>
+      <Color>Black</Color>
+      <Alquilado>false</Alquilado>
+      <Costo>7388</Costo>
+    </Vehiculo>
+    <Vehiculo>
+      <Patente>AS 456 DE</Patente>
+      <Clasificcacion>Economico</Clasificcacion>
+      <Color>Black</Color>
+      <Alquilado>false</Alquilado>
+      <Costo>7388</Costo>
     </Vehiculo>
   </Lista>
 </ControlListasOfVehiculo>

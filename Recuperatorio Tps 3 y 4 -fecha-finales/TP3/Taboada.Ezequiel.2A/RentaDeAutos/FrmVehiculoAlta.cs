@@ -15,6 +15,7 @@ namespace RentaDeAutos
     {
         List<Vehiculo> vehiculos;
         private Vehiculo vehiculo;
+        string patente;
 
         public virtual Vehiculo Vehiculo { get => vehiculo; }
 
@@ -40,7 +41,7 @@ namespace RentaDeAutos
             {
                 Enum.TryParse<EClasificcacion>(this.cmbClasificacion.SelectedValue.ToString(), out EClasificcacion clasificcacion);
                 Enum.TryParse<ConsoleColor>(this.cmbColor.SelectedValue.ToString(), out ConsoleColor color);
-                this.vehiculo = new Vehiculo(textBox1.Text, clasificcacion, color, false);
+                this.vehiculo = new Vehiculo(this.patente, clasificcacion, color, false);
                 this.DialogResult = DialogResult.OK;
             }
         }
@@ -65,19 +66,39 @@ namespace RentaDeAutos
             this.cmbColor.DataSource = Enum.GetValues(typeof(ConsoleColor));
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_Validated(object sender, EventArgs e)
         {
+            if (ExistePatente(this.patente))
+            {
+                MessageBox.Show("La patente ya existe");
+                this.textBox1.Clear();
+                this.textBox1.Focus();
+            }
+
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Validador.TryParsePatente(this.textBox1.Text,out this.patente))
+            {
+                MessageBox.Show("Formato de patente incorrecto\n ej:AA000AA - AA 000 AAA");
+                this.textBox1.Clear();
+                this.textBox1.Focus();
+            }
+        }
+
+        private bool ExistePatente(string dato)
+        {
+            bool existe = false;
             foreach (Vehiculo item in this.vehiculos)
             {
-                if (item.Patente == this.textBox1.Text.ToUpper())
+                if (item.Patente == dato)
                 {
-                    MessageBox.Show("La patente ya existe");
-                    this.textBox1.Clear();
-                    this.textBox1.Focus();
+                    existe = true;
                     break;
                 }
-            }  
-            
+            }
+            return existe;
         }
     }
 }

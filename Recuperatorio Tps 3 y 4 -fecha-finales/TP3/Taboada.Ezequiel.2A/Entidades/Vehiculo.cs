@@ -33,7 +33,7 @@ namespace Entidades
             this.costo = Vehiculo.ValorDia(this.clasificcacion);
         }
 
-        public string Patente { get => patente; set => patente = value.ToUpper(); }
+        public string Patente { get => patente; set => patente = value; }
         public EClasificcacion Clasificcacion { get => clasificcacion; set => clasificcacion = value; }
         public ConsoleColor Color { get => color; set => color = value; }
         public bool Alquilado { get => alquilado; set => alquilado = value; }

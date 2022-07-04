@@ -57,12 +57,104 @@ namespace Entidades
 
         public static bool Es_DNI_Telefono(string dato)
         {
-            bool valido = false;
-            if (dato.Length == 8 && Validador.EsUInt(dato))
+            return dato.Length == 8 && Validador.EsUInt(dato);
+        }
+        public static bool EsSoloLetras(string strNumero)
+        {
+            bool letra = true;
+
+            foreach (char item in strNumero)
             {
-                valido = true;
+
+                if (!char.IsLetter(item))
+                {
+                    letra = false;
+                    break;
+                }
+
             }
-            return valido;
+            return letra;
+        }
+
+        public static bool EsPatente(string patente)
+        {
+            bool es = true;
+            if (patente.Length != 7 && patente.Length != 9)
+            {
+                es = false;
+            }
+            else
+            {
+                if (patente.Length == 7)
+                {
+                    for (int i = 0; i < patente.Length; i++)
+                    {
+                        if (i == 0 || i == 1 || i == 5 || i == 6)
+                        {
+                            if (!char.IsLetter(patente[i]))
+                            {
+                                es = false;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (!char.IsDigit(patente[i]))
+                            {
+                                es = false;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < patente.Length; i++)
+                    {
+                        if (i == 2 || i == 6)
+                        {
+                            continue;
+                        }
+                        if (i == 0 || i == 1 || i == 7 || i == 8)
+                        {
+                            if (!char.IsLetter(patente[i]))
+                            {
+                                es = false;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (!char.IsDigit(patente[i]))
+                            {
+                                es = false;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+            return es;
+        }
+
+        public static string FormatoPatente(string patente)
+        {
+            string formato = patente.Length == 7 ? patente.Substring(0, 2) + " " + patente.Substring(2, 3) + " " + patente[5..] : patente;
+            return formato.ToUpper();
+        }
+
+        public static bool TryParseNombre(string entrada, out string salida)
+        {
+            salida = EsSoloLetras(entrada) ? FormatoNombre(entrada) : null;
+            return salida is not null;
+        }
+
+        public static bool TryParsePatente(string entrada, out string salida)
+        {
+            salida = EsPatente(entrada) ? FormatoPatente(entrada) : null;
+            return salida is not null;
         }
     }
 }

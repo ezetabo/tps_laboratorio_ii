@@ -15,6 +15,10 @@ namespace RentaDeAutos
     {
         private List<Cliente> clientes;
         private Cliente cliente;
+        private string dni;
+        private string nombre;
+        private string apeliido;
+        private string telefono;
 
         public List<Cliente> Clientes { get => clientes; set => clientes = value; }
         public virtual Cliente Cliente { get => cliente; set => cliente = value; }
@@ -53,41 +57,18 @@ namespace RentaDeAutos
         {
             if (VerificarCarga())
             {
-                if (!Validador.Es_DNI_Telefono(this.textBox1.Text))
-                {
-                    MessageBox.Show("Formato de Dni incorrecto");
-                    this.textBox1.Clear();
-                    this.textBox1.Focus();
-                }
-                if (!Validador.Es_DNI_Telefono(this.txtTelefono.Text))
-                {
-                    MessageBox.Show("Formato de Telefono incorrecto");
-                    this.txtTelefono.Clear();
-                    this.txtTelefono.Focus();
-                }
-                cliente = new Cliente(this.textBox1.Text,this.txtNombre.Text,this.txtApellido.Text,this.txtTelefono.Text);
+                cliente = new Cliente(dni, nombre, apeliido, telefono);
                 this.DialogResult = DialogResult.OK;
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-            foreach (Cliente item in this.clientes)
+            else
             {
-                if (item.Dni == this.textBox1.Text)
-                {
-                    MessageBox.Show("El DNI ya existe");
-                    this.textBox1.Clear();
-                    this.textBox1.Focus();
-                    break;
-                }                
+                MessageBox.Show("por favor debe completar todos los campos");
             }
         }
-        
+
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.txtNombre.Text))
+            if (!Validador.TryParseNombre(this.txtNombre.Text, out nombre))
             {
                 MessageBox.Show("Nombre no Valido");
                 this.txtNombre.Clear();
@@ -97,13 +78,67 @@ namespace RentaDeAutos
 
         private void txtApellido_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(this.txtApellido.Text))
+            if (!Validador.TryParseNombre(this.txtApellido.Text, out apeliido))
             {
                 MessageBox.Show("Apellido no valido");
                 this.txtApellido.Clear();
                 this.txtApellido.Focus();
             }
         }
+
+        private void textBox1_Validated(object sender, EventArgs e)
+        {
+            if (EixsteDni(this.textBox1.Text))
+            {
+                MessageBox.Show("El DNI ya existe");
+                this.textBox1.Clear();
+                this.textBox1.Focus();
+            }
+            else
+            {
+                dni = this.textBox1.Text;
+            }
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (!Validador.Es_DNI_Telefono(this.textBox1.Text))
+            {
+                MessageBox.Show("El formato no es valido");
+                this.textBox1.Clear();
+                this.textBox1.Focus();
+
+            }
+        }
+
+        private void txtTelefono_Validated(object sender, EventArgs e)
+        {
+            if (!Validador.Es_DNI_Telefono(this.txtTelefono.Text))
+            {
+                MessageBox.Show("Formato de Telefono incorrecto");
+                this.txtTelefono.Clear();
+                this.txtTelefono.Focus();
+            }
+            else
+            {
+                telefono = this.txtTelefono.Text;
+            }
+        }
+
+        private bool EixsteDni(string dni)
+        {
+            bool existe = false;
+            foreach (Cliente item in this.clientes)
+            {
+                if (item.Dni == dni)
+                {
+                    existe = true;
+                    break;
+                }
+            }
+            return existe;
+        }
+
     }
 
 }
