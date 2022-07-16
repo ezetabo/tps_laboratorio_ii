@@ -62,7 +62,7 @@ namespace Entidades
             foreach (char item in strNumero)
             {
 
-                if (!char.IsLetter(item))
+                if (!char.IsLetter(item) && !char.IsWhiteSpace(item))
                 {
                     letra = false;
                     break;
@@ -143,7 +143,7 @@ namespace Entidades
 
         public static bool TryParseNombre(string entrada, out string salida)
         {
-            salida = EsSoloLetras(entrada) ? FormatoNombre(entrada) : null;
+            salida = EsSoloLetras(entrada) ? entrada : null;
             return salida is not null;
         }
 

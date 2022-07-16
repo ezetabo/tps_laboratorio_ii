@@ -12,7 +12,7 @@ namespace RentaDeAutos
         private Cliente cliente;
         private string dni;
         private string nombre;
-        private string apeliido;
+        private string apellido;
         private string telefono;
 
         public List<Cliente> Clientes { get => clientes; set => clientes = value; }
@@ -52,7 +52,7 @@ namespace RentaDeAutos
         {
             if (VerificarCarga())
             {
-                this.cliente = new Cliente(dni, nombre, apeliido, telefono);
+                this.cliente = new Cliente(dni, Validador.FormatoNombre(nombre), Validador.FormatoNombre(apellido), telefono);
                 this.DialogResult = DialogResult.OK;
             }
             else
@@ -73,7 +73,7 @@ namespace RentaDeAutos
 
         private void txtApellido_TextChanged(object sender, EventArgs e)
         {
-            if (!Validador.TryParseNombre(this.txtApellido.Text, out apeliido))
+            if (!Validador.TryParseNombre(this.txtApellido.Text, out apellido))
             {
                 MessageBox.Show("Apellido no valido");
                 this.txtApellido.Clear();
