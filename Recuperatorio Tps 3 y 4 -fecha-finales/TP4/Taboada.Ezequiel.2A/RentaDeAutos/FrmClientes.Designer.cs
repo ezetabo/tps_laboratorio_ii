@@ -32,7 +32,7 @@ namespace RentaDeAutos
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClientes));
             this.gpbCliente = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@ namespace RentaDeAutos
             // gpbCliente
             // 
             this.gpbCliente.Controls.Add(this.label1);
-            this.gpbCliente.Controls.Add(this.textBox1);
+            this.gpbCliente.Controls.Add(this.txtDni);
             this.gpbCliente.Controls.Add(this.btnAgregar);
             this.gpbCliente.Controls.Add(this.btnEditar);
             this.gpbCliente.Controls.Add(this.btnEliminar);
@@ -69,12 +69,13 @@ namespace RentaDeAutos
             this.label1.TabIndex = 31;
             this.label1.Text = "D.N.I";
             // 
-            // textBox1
+            // txtDni
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 23);
-            this.textBox1.TabIndex = 32;
+            this.txtDni.Location = new System.Drawing.Point(92, 28);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(165, 23);
+            this.txtDni.TabIndex = 32;
+            this.txtDni.TextChanged += new System.EventHandler(this.txtDni_TextChanged);
             // 
             // btnAgregar
             // 
@@ -178,6 +179,6 @@ namespace RentaDeAutos
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDni;
     }
 }

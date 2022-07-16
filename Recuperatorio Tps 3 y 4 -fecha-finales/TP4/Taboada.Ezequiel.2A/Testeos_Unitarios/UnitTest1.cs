@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Entidades;
 using Excepciones;
 using ControlArchivos;
+using System.Collections.Generic;
 
 namespace Testeos_Unitarios
 {
@@ -95,5 +96,14 @@ namespace Testeos_Unitarios
             }
            
         }
+        [TestMethod]
+        public void Leer_Lista()
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            List<Cliente> clientes = clienteDAO.Leer();
+            
+            Assert.IsTrue(clientes.Count >0 );
+        }
+
     }
 }

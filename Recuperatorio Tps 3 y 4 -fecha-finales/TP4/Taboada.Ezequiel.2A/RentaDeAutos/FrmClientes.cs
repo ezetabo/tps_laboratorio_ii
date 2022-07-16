@@ -9,21 +9,21 @@ namespace RentaDeAutos
     public partial class FrmClientes : Form
     {
 
-        ControlListas<Cliente> clientes;
+        List<Cliente> clientes;
         Cliente cliente;
 
         public Cliente Cliente { get => cliente; set => cliente = value; }
-               
-        public FrmClientes(ControlListas<Cliente> clientes)
+
+        public FrmClientes()
         {
             InitializeComponent();
-            this.clientes = clientes;
+            clientes = ClienteDAO.Leer();
 
         }
 
         private void FrmClientes_Load(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = clientes.Lista;
+            this.dataGridView1.DataSource = clientes;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -31,74 +31,69 @@ namespace RentaDeAutos
             this.cliente = (Cliente)this.dataGridView1.CurrentRow.DataBoundItem;
             if (MessageBox.Show("*** ESTE PROCESO ES IRREVERSIBLE *** \n\n ¿Seguro que quiere eliminar ese Cliente?", "Eliminar Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                if (this.clientes - cliente)
+                if (ClienteDAO.Eliminar(cliente.Dni))
                 {
                     MessageBox.Show("Cliente eliminado");
-                    Limpar();
+                    Limpiar();
                 }
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FrmClienteAlta frmAlta = new FrmClienteAlta(this.clientes.Lista);
+            FrmClienteAlta frmAlta = new FrmClienteAlta(this.clientes);
             frmAlta.ShowDialog();
             if (frmAlta.DialogResult == DialogResult.OK)
             {
-                if (this.clientes + frmAlta.Cliente)
+                if (ClienteDAO.Guardar(frmAlta.Cliente))
                 {
                     MessageBox.Show("Alta exitosa");
-                    Limpar();
+                    Limpiar();
                 }
             }
         }
 
-        private void txtPatente_TextChanged(object sender, EventArgs e)
+        private void txtDni_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.textBox1.Text))
+            if (!string.IsNullOrEmpty(this.txtDni.Text))
             {
                 List<Cliente> aux = new List<Cliente>();
-                foreach (Cliente  item in this.clientes.Lista)
+                foreach (Cliente item in this.clientes)
                 {
-                    if (item.Dni.StartsWith(this.textBox1.Text.ToUpper()))
+                    if (item.Dni.StartsWith(this.txtDni.Text.ToUpper()))
                     {
                         aux.Add(item);
                     }
                 }
                 this.dataGridView1.DataSource = aux;
             }
-
-        }
+        }       
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            Limpar();
+            Limpiar();
         }
 
-        private void Limpar()
+        private void Limpiar()
         {
             this.dataGridView1.DataSource = null;
-            this.textBox1.Text = null;
-            this.dataGridView1.DataSource = this.clientes.Lista;
+            this.txtDni.Text = null;
+            this.dataGridView1.DataSource = ClienteDAO.Leer();
         }
-           
+
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
             FrmClienteModificacion modificacion = new FrmClienteModificacion((Cliente)this.dataGridView1.CurrentRow.DataBoundItem);
             modificacion.ShowDialog();
             if (modificacion.DialogResult == DialogResult.OK)
             {
-                int indice = ControlListas<Cliente>.BuscarIndex(this.clientes, modificacion.Cliente);
-                if (indice > -1)
+
+                if (ClienteDAO.Modificar(modificacion.Cliente))
                 {
-                    this.clientes.Lista[indice] = modificacion.Cliente;
                     MessageBox.Show("Modificacion exitosa");
-                    Limpar();
+                    Limpiar();
                 }
-                else
-                {
-                    MessageBox.Show("se rompio");
-                }
+
             }
         }
 
@@ -107,5 +102,7 @@ namespace RentaDeAutos
             this.cliente = (Cliente)this.dataGridView1.CurrentRow.DataBoundItem;
             this.DialogResult = DialogResult.OK;
         }
+
     }
+       
 }

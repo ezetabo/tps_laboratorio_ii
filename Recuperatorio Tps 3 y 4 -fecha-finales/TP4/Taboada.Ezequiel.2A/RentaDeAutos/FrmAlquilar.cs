@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using ControlArchivos;
@@ -8,17 +9,16 @@ namespace RentaDeAutos
 {
     public partial class FrmAlquilar : Form
     {
-        private ControlListas<Cliente> clientes;
+       
         private ControlListas<Vehiculo> vehiculos;
         private Cliente cliente;
         private Vehiculo vehiculo;
        
 
 
-        public FrmAlquilar(ControlListas<Cliente> clientes, ControlListas<Vehiculo> vehiculos)
+        public FrmAlquilar( ControlListas<Vehiculo> vehiculos)
         {
-            InitializeComponent();
-            this.clientes = clientes;
+            InitializeComponent();          
             this.vehiculos = vehiculos;          
 
         }
@@ -27,7 +27,7 @@ namespace RentaDeAutos
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
-            FrmClientes frmClientes = new FrmClientes(clientes);
+            FrmClientes frmClientes = new FrmClientes();
             frmClientes.ShowDialog();
             if (frmClientes.DialogResult == DialogResult.OK)
             {
