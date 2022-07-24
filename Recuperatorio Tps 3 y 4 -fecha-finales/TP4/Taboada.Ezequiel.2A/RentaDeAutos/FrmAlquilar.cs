@@ -23,8 +23,6 @@ namespace RentaDeAutos
 
         }
 
-       
-
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
             FrmClientes frmClientes = new FrmClientes();
@@ -44,6 +42,10 @@ namespace RentaDeAutos
             {
                 this.vehiculo = frmVehiculos.Vehiculo;
                 this.rtbVehiculo.Text += this.vehiculo.ToString();
+            }
+            else
+            {
+                MessageBox.Show("seleccione un vechiculo que este libre");
             }
         }
 

@@ -97,10 +97,10 @@ namespace Testeos_Unitarios
            
         }
         [TestMethod]
-        public void Leer_Lista()
+        public void Leer_Lista_DB()
         {
-            ClienteDAO clienteDAO = new ClienteDAO();
-            List<Cliente> clientes = clienteDAO.Leer();
+           
+            List<Cliente> clientes = ClienteDAO.Leer();
             
             Assert.IsTrue(clientes.Count >0 );
         }

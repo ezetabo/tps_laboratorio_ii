@@ -35,6 +35,7 @@ namespace RentaDeAutos
             this.toolVehiculos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolAlquiler = new System.Windows.Forms.ToolStripMenuItem();
             this.toolSalir = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblHora = new System.Windows.Forms.Label();
             this.menuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +90,17 @@ namespace RentaDeAutos
             this.toolSalir.Text = "Salir";
             this.toolSalir.Click += new System.EventHandler(this.toolSalir_Click);
             // 
+            // lblHora
+            // 
+            this.lblHora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblHora.Font = new System.Drawing.Font("Sitka Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblHora.Location = new System.Drawing.Point(528, 9);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(444, 54);
+            this.lblHora.TabIndex = 4;
+            this.lblHora.Text = "label1";
+            this.lblHora.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -96,6 +108,7 @@ namespace RentaDeAutos
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(984, 416);
+            this.Controls.Add(this.lblHora);
             this.Controls.Add(this.menuPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmPrincipal";
@@ -117,6 +130,7 @@ namespace RentaDeAutos
         private System.Windows.Forms.ToolStripMenuItem toolVehiculos;
         private System.Windows.Forms.ToolStripMenuItem toolAlquiler;
         private System.Windows.Forms.ToolStripMenuItem toolSalir;
+        private System.Windows.Forms.Label lblHora;
     }
 }
 

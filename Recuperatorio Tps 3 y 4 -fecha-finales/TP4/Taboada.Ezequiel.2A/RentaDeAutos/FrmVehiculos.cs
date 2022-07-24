@@ -106,7 +106,15 @@ namespace RentaDeAutos
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.vehiculo = (Vehiculo)this.dataGridView1.CurrentRow.DataBoundItem;
-            this.DialogResult = DialogResult.OK;
+            if (!vehiculo.Alquilado)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.DialogResult = DialogResult.Abort;
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

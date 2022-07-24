@@ -173,7 +173,7 @@
   <data name="toolVehiculos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAHyhJREFUeF7tWwdYFWfWJmrUWKPYRRErUuwdjTHRWGKLxhhji4m9hWLB3hsWFAEF
+        vAAADrwBlbxySQAAHyhJREFUeF7tWwdYFWfWJmrUWKPYRRErUuwdjTHRWGKLxhhji4m9hWLB3hsWFAEF
         KQIC0nvvXMq91Evn0nuX3st9//MNV+Pun91NdrP/ZvP8h+d9Zu5lcOZ9z/lOmRml/t/+Tbb3x0Mq9x89
         2WD52n6Dp4//Bh4vYkNUVOwGH//gDc9emKybO3fuh5JD/3z27Z49M9Q1L4mNza3h5R+CiGghRDn5qKyu
         RXZ+EXyDI6Cjb3xScvifzzZt3b7spzMXYWzxGq5efgiJiEYGCVBX34iKNzXwCQrDrYdPLksO//PZth07
@@ -312,7 +312,7 @@
   <data name="toolAlquiler.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAATwElE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA68AAAOvAGVvHJJAAATwElE
         QVR4Xu1aB1RU57Ye6WWG3ptgwZIoaqwIioiVYhdFxY6x997r81meGrvR2G5iy7X3XiEKYsWOXbGhYoko
         MN/99s/oSl7uWu+99S5xrit7rb3OcM5/zpzdvv3tf9D8JX/Jv7uY5R9Mrcw1hawcNBord00hazeNmY29
         iaWtqYmFbf71L09MLTQmlj4mZtZhlta23e3tdN/7ezkdLu3vcrGEn/N5HzeHfTqdbraFtTbG3Fprb2mj

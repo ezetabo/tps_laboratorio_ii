@@ -1,6 +1,8 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -9,21 +11,32 @@ namespace RentaDeAutos
     public partial class FrmClientes : Form
     {
 
-        List<Cliente> clientes;
-        Cliente cliente;
+        private List<Cliente> clientes;
+        private Cliente cliente;
 
         public Cliente Cliente { get => cliente; set => cliente = value; }
 
         public FrmClientes()
         {
             InitializeComponent();
-            clientes = ClienteDAO.Leer();
+            clientes = new List<Cliente>();
 
         }
 
-        private void FrmClientes_Load(object sender, EventArgs e)
+        private async void FrmClientes_Load(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = clientes;
+            BloquearAcciones();
+            this.clientes = await FrmClientes.TraerClientes();
+            if (clientes is not null)
+            {
+                this.dataGridView1.DataSource = clientes;
+                LiberarAcciones();
+            }
+            else
+            {
+                MessageBox.Show("No se logro concectar con la base de datos de clientes");
+            }
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -67,7 +80,7 @@ namespace RentaDeAutos
                 }
                 this.dataGridView1.DataSource = aux;
             }
-        }       
+        }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
@@ -103,6 +116,44 @@ namespace RentaDeAutos
             this.DialogResult = DialogResult.OK;
         }
 
+        private void BloquearAcciones()
+        {
+            dataGridView1.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnLimpiar.Enabled = false;
+            txtDni.Enabled = false;           
+        }
+
+        private void LiberarAcciones()
+        {
+            dataGridView1.Enabled = true;
+            btnAgregar.Enabled = true;
+            btnEditar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnLimpiar.Enabled = true;
+            txtDni.Enabled = true;            
+        }
+
+
+        private async static Task<List<Cliente>> TraerClientes()
+        {
+            List<Cliente> clientes = await Task.Run(() =>
+            {
+                try
+                {
+                    return ClienteDAO.Leer();
+
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            });
+
+            return clientes;
+        }
     }
-       
+
 }

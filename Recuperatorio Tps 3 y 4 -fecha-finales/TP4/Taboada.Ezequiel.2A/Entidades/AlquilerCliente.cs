@@ -14,9 +14,7 @@ namespace Entidades
         private double total;
         private DateTime fechaAlquiler;
         private DateTime fechaRetorno;
-
-       
-
+               
         public Cliente Cliente { get => cliente; set => cliente = value; }
         public Vehiculo VehiculoActual { get => vehiculoActual; set => vehiculoActual = value; }
         public int CantidadDias { get => cantidadDias; set => cantidadDias = value; }
